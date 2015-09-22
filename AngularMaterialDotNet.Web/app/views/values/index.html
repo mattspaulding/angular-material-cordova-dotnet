@@ -1,4 +1,4 @@
-﻿<div ng-init="getValues()">
+﻿<div>
     <div layout="row" layout-sm="column" layout-align="center center" ng-show="data.loading">
         <md-progress-linear md-mode="indeterminate"></md-progress-linear>
     </div>
@@ -9,19 +9,19 @@
             <p class="md-no-sticky">{{value.description}}</p>
    <div flex>
        <md-button aria-label="Details" class="md-icon-button">
-           <ng-md-icon icon="details" style="fill:#23B9A3;" ng-click="go('/value/details/'+value.valueId)"></ng-md-icon>
+           <ng-md-icon icon="details" style="fill:#23B9A3;" ng-click="go('/values/details/'+value.valueId)"></ng-md-icon>
        </md-button>
        <md-button aria-label="Edit" class="md-icon-button">
-           <ng-md-icon icon="edit" style="fill:#23B9A3;" ng-click="go('/value/edit/'+value.valueId)"></ng-md-icon>
+           <ng-md-icon icon="edit" style="fill:#23B9A3;" ng-click="go('/values/edit/'+value.valueId)"></ng-md-icon>
        </md-button>
           <md-button aria-label="Delete" class="md-icon-button">
-                    <ng-md-icon icon="delete" style="fill:#23B9A3;" ng-click="deleteValue(value.valueId)"></ng-md-icon>
+                    <ng-md-icon icon="delete" style="fill:#23B9A3;" ng-click="deleteValue(value)"></ng-md-icon>
                 </md-button>
             </div>
         </md-list-item>
     </md-list>
     <div layout="row" layout-align="end">
-        <md-button class="md-raised" data-ng-click="go('/value/add')">Add Value</md-button>
+        <md-button class="md-raised" data-ng-click="go('/values/add')">Add Value</md-button>
     </div>
 
 </div>

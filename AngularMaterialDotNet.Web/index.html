@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </md-button>
-            <md-button aria-label="Values" style="width:100%;" ng-click="go('/value');menuToggle();" ng-hide="!authentication.isAuth">
+            <md-button aria-label="Values" style="width:100%;" ng-click="go('/values');menuToggle();" ng-hide="!authentication.isAuth">
                 <div layout="row">
                     <div flex="20">
                         <ng-md-icon icon="stars" size="48" style="fill:white;"></ng-md-icon>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </md-button>
-            <md-button aria-label="Add Value" style="width:100%;" ng-click="go('/value/add');menuToggle();" ng-hide="!authentication.isAuth">
+            <md-button aria-label="Add Value" style="width:100%;" ng-click="go('/values/add');menuToggle();" ng-hide="!authentication.isAuth">
                 <div layout="row">
                     <div flex="20">
                         <ng-md-icon icon="plus_one" size="48" style="fill:white;"></ng-md-icon>
@@ -141,7 +141,7 @@
             </div>
         </md-toolbar>
         <md-content flex layout-padding id="content">
-            <div class="fade-view" flex data-ng-view="">
+            <div class="fade-view" flex ui-view="">
             </div>
     </div>
 
@@ -152,11 +152,11 @@
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/bower_components/angular-material/angular-material.js"></script>
     <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
-    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="/bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
     <script src="/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
     <script src="/bower_components/svg-morpheus/compile/minified/svg-morpheus.js"></script>
-    <script src="/bower_components/angular-filter/dist/angular-filter.min.js"></script>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/moment/moment.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -167,7 +167,7 @@
     <!-- Load services -->
     <script src="app/services/authInterceptorService.js"></script>
     <script src="app/services/authService.js"></script>
-    <script src="app/services/valueService.js"></script>
+    <script src="app/services/valuesService.js"></script>
     <script src="app/services/userService.js"></script>
     <!-- Load controllers -->
     <script src="app/controllers/indexController.js"></script>
@@ -175,7 +175,7 @@
     <script src="app/controllers/userController.js"></script>
     <script src="app/controllers/loginController.js"></script>
     <script src="app/controllers/signupController.js"></script>
-    <script src="app/controllers/valueController.js"></script>
+    <script src="app/controllers/valuesController.js"></script>
     <script src="app/controllers/sideNavLeftController.js"></script>
     <!-- Load custom filters -->
     <script src="app/filters/reverseFilter.js"></script>

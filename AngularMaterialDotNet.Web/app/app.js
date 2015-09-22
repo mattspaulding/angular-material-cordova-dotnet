@@ -1,54 +1,63 @@
 ﻿
-var app = angular.module('App', ['ngRoute', 'LocalStorageModule', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'ui.bootstrap.datetimepicker', 'ui.bootstrap.timepicker', 'angular.filter']);
+var app = angular.module('App', ['ui.router','ngResource', 'App.valuesControllers', 'App.valuesServices', 'LocalStorageModule', 'ngMaterial', 'ngMessages', 'ngMdIcons']);
 
-app.config(function ($routeProvider) {
+app.config(function ($stateProvider,$urlRouterProvider) {
 
-    $routeProvider.when("/home", {
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider.state("home", {
+        url: "/",
         controller: "homeController",
         templateUrl: "/app/views/home/index.html"
-    });
+    })
 
-    $routeProvider.when("/user", {
+    $stateProvider.state("user", {
+        url: "/user", 
         controller: "userController",
         templateUrl: "/app/views/user/index.html"
     });
 
-    $routeProvider.when("/user/edit/:userId", {
+    $stateProvider.state("userEdit", {
+        url: "/user/edit/:userId", 
         controller: "userController",
         templateUrl: "/app/views/user/edit.html"
     });
 
-    $routeProvider.when("/login", {
+    $stateProvider.state("login", {
+        url: "/login", 
         controller: "loginController",
         templateUrl: "/app/views/account/login.html"
     });
 
-    $routeProvider.when("/signup", {
+    $stateProvider.state("signup", {
+        url: "/signup", 
         controller: "signupController",
         templateUrl: "/app/views/account/signup.html"
     });
 
-    $routeProvider.when("/value", {
-        controller: "valueController",
-        templateUrl: "/app/views/value/index.html"
+    $stateProvider.state("values", {
+        url: "/values", 
+        controller: "valuesIndexController",
+        templateUrl: "/app/views/values/index.html"
     });
 
-    $routeProvider.when("/value/add", {
-        controller: "valueController",
-        templateUrl: "/app/views/value/add.html"
+    $stateProvider.state("valuesAdd", {
+        url: "/values/add", 
+        controller: "valuesAddController",
+        templateUrl: "/app/views/values/add.html"
     });
 
-    $routeProvider.when("/value/edit/:valueId", {
-        controller: "valueController",
-        templateUrl: "/app/views/value/edit.html"
+    $stateProvider.state("valuesEdit", {
+        url: "/values/edit/:valueId", 
+        controller: "valuesEditController",
+        templateUrl: "/app/views/values/edit.html"
     });
 
-    $routeProvider.when("/value/details/:valueId", {
-        controller: "valueController",
-        templateUrl: "/app/views/value/details.html"
+    $stateProvider.state("valuesDetails", {
+        url: "/values/details/:valueId", 
+        controller: "valuesDetailsController",
+        templateUrl: "/app/views/values/details.html"
     });
-
-    $routeProvider.otherwise({ redirectTo: "/home" });
 
 });
 

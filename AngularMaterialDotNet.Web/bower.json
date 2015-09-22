@@ -17,6 +17,16 @@
     "tests"
   ],
   "dependencies": {
-    "angular-bootstrap-datetimepicker": "~0.3.13"
+    "angular": "~1.4.6",
+    "angular-bootstrap": "~0.13.4",
+    "angular-local-storage": "~0.2.2",
+    "angular-material": "~0.11.0",
+    "angular-material-icons": "~0.6.0",
+    "angular-messages": "~1.4.6",
+    "angular-resource": "~1.4.6",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "svg-morpheus": "~0.1.8"
   }
 }
