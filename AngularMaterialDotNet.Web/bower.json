@@ -1,0 +1,22 @@
+{
+  "name": "AngularMaterialOAuth.Web",
+  "version": "0.0.0",
+  "authors": [
+    "Matt Spaulding <mrmattspaulding@gmail.com>"
+  ],
+  "description": "bower init",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap-datetimepicker": "~0.3.13"
+  }
+}

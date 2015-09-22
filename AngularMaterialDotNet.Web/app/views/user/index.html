@@ -1,0 +1,22 @@
+﻿<div ng-init="getUsers()">
+    <div>
+        <md-content>
+            <md-list>
+                <md-subheader class="md-no-sticky">Users</md-subheader>
+                <md-list-item ng-repeat="user in users">
+                    <div flex="50" layout="row">
+                        <div flex>
+                            <h4>{{ user.userName }}</h4>
+                        </div>
+                        <md-button aria-label="Edit" class="md-icon-button">
+                            <ng-md-icon icon="edit" style="fill:#23B9A3;" ng-click="go('/user/edit/'+user.id)"></ng-md-icon>
+                        </md-button>
+                        <md-button aria-label="Delete" class="md-icon-button">
+                            <ng-md-icon icon="delete" style="fill:#23B9A3;" ng-click="deleteUser(user.id)"></ng-md-icon>
+                        </md-button>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </div>
+</div>

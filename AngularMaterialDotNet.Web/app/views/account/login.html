@@ -1,0 +1,44 @@
+﻿<div layout="row">
+    <div flex flex-gt-sm="50" offset-gt-sm="25">
+        <md-content layout-padding>
+            <form name="userForm">
+                <h2 class="form-login-heading">Login</h2>
+                <md-input-container flex>
+                    <label>Username</label>
+                    <input required name="userName" ng-maxlength="20" ng-model="loginData.userName">
+                    <div ng-messages="userForm.userName.$error">
+                        <div ng-message="required">required</div>
+                        <div ng-message="maxlength">too long</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Password</label>
+                    <input required name="password" type="password" ng-model="loginData.password">
+                    <div ng-messages="userForm.password.$error">
+                        <div ng-message="required">required</div>
+                    </div>
+                </md-input-container>
+                <div layout="row" layout-align="end">
+                    <md-button type="submit" ng-click="login()">Login</md-button>
+                 </div>
+                <div layout="row" layout-align="end">
+                    <md-button style="color:lightgray;" ng-click="go('/signup')">Sign up if you don't have an account</md-button>
+                </div>
+       <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                    {{message}}
+                </div>
+                <!--<md-divider md-inset></md-divider>
+                <div flex>
+                    <h2 class="form-login-heading">Social Logins</h2>
+                    <p>Or you can login using one of the social logins</p>
+                    <md-button flex="100" style="font-size:18px;" ng-click="authExternalProvider('Facebook')">
+                        <ng-md-icon icon="facebook" size="44"></ng-md-icon><span> Connect with Facebook</span>
+                    </md-button>
+                    <md-button flex="100" style="font-size:18px;" ng-click="authExternalProvider('Google')">
+                        <ng-md-icon icon="google-plus" size="44"></ng-md-icon><span> Connect with Google+</span>
+                    </md-button>
+                </div>-->
+            </form>
+        </md-content>
+    </div>
+</div>

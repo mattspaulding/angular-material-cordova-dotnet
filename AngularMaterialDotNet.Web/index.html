@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="keywords" content="Calories" />
+    <meta name="description" content="Angular Material DotNet" />
+    <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Angular Material DotNet</title>
+    <link href="content/css/site.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!-- Bower Components -->
+    <link href="/bower_components/angular-material/angular-material.css" rel="stylesheet" />
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="/bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css" rel="stylesheet" />
+</head>
+<body ng-app="App" layout="row" ng-controller="indexController">
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                style="background-color:lightblue;"
+                md-is-locked-open="$mdMedia('gt-md')">
+        <md-toolbar layout="row" class="md-whiteframe-z1" >
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" hide-gt-md aria-label="Show Menu">
+                    <ng-md-icon icon="{{menuIcon}}" size="48" style="fill:white;" ng-click="menuToggle()" hide-gt-md></ng-md-icon>
+                </md-button>
+                <h2>Menu</h2>
+            </div>
+        </md-toolbar>
+        <md-content layout-padding style="background-color:lightblue;" layout="column">
+            <md-button aria-label="Home" style="width:100%;" ng-click="go('/home');menuToggle();">
+                <div layout="row">
+                    <div flex="20">
+                        <ng-md-icon icon="home" size="48" style="fill:white;"></ng-md-icon>
+                    </div>
+                    <div flex layout="row" layout-align="start center">
+                        <span style="font-size:18px;color:white;">Home</span>
+                    </div>
+                </div>
+            </md-button>
+            <md-button aria-label="Values" style="width:100%;" ng-click="go('/value');menuToggle();" ng-hide="!authentication.isAuth">
+                <div layout="row">
+                    <div flex="20">
+                        <ng-md-icon icon="stars" size="48" style="fill:white;"></ng-md-icon>
+                    </div>
+                    <div flex layout="row" layout-align="start center">
+                        <span style="font-size:18px;color:white;">My Values</span>
+                    </div>
+                </div>
+            </md-button>
+            <md-button aria-label="Add Value" style="width:100%;" ng-click="go('/value/add');menuToggle();" ng-hide="!authentication.isAuth">
+                <div layout="row">
+                    <div flex="20">
+                        <ng-md-icon icon="plus_one" size="48" style="fill:white;"></ng-md-icon>
+                    </div>
+                    <div flex layout="row" layout-align="start center">
+                        <span style="font-size:18px;color:white;">Add Value</span>
+                    </div>
+                </div>
+            </md-button>
+            <md-divider></md-divider>
+            <md-button aria-label="Users" style="width:100%;" ng-click="go('/user');menuToggle();" ng-show="authentication.role=='Administrator' || authentication.role=='UserManager'">
+                <div layout="row">
+                    <div flex="20">
+                        <ng-md-icon icon="face" size="48" style="fill:white;"></ng-md-icon>
+                    </div>
+                    <div flex layout="row" layout-align="start center">
+                        <span style="font-size:18px;color:white;">Users</span>
+                    </div>
+                </div>
+            </md-button>
+            <md-button aria-label="Admin" style="width:100%;" ng-click="go('/home');menuToggle();" ng-show="authentication.role=='Administrator'">
+                <div layout="row">
+                    <div flex="20">
+                        <ng-md-icon icon="vpn_key" size="48" style="fill:white;"></ng-md-icon>
+                    </div>
+                    <div flex layout="row" layout-align="start center">
+                        <span style="font-size:18px;color:white;">Admin</span>
+                    </div>
+                </div>
+            </md-button>
+            <md-button aria-label="Login" style="width:100%;" ng-click="go('/login');menuToggle();" ng-hide="authentication.isAuth">
+                <div layout="row">
+                    <div flex="20">
+                        <ng-md-icon icon="login" size="48" style="fill:white;"></ng-md-icon>
+                    </div>
+                    <div flex layout="row" layout-align="start center">
+                        <span style="font-size:18px;color:white;">Login</span>
+                    </div>
+                </div>
+            </md-button>
+            <md-button aria-label="Signup" style="width:100%;" ng-click="go('/signup');menuToggle();" ng-hide="authentication.isAuth">
+                <div layout="row">
+                    <div flex="20">
+                        <ng-md-icon icon="person_add" size="48" style="fill:white;"></ng-md-icon>
+                    </div>
+                    <div flex layout="row" layout-align="start center">
+                        <span style="font-size:18px;color:white;">Signup</span>
+                    </div>
+                </div>
+            </md-button>
+            <md-button aria-label="Logout" style="width:100%;" ng-click="logOut();menuToggle();" ng-hide="!authentication.isAuth">
+                <div layout="row">
+                    <div flex="20">
+                        <ng-md-icon icon="logout" size="48" style="fill:white;"></ng-md-icon>
+                    </div>
+                    <div flex layout="row" layout-align="start center">
+                        <span style="font-size:18px;color:white;">Logout</span>
+                    </div>
+                </div>
+            </md-button>
+        </md-content>
+    </md-sidenav>
+
+    <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+        <md-toolbar layout="row" class="md-whiteframe-z1">
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" hide-gt-md aria-label="Show Menu">
+                    <ng-md-icon icon="{{menuIcon}}" size="48" style="fill:white;" ng-click="menuToggle()"></ng-md-icon>
+                    <md-tooltip>
+                        Menu
+                    </md-tooltip>
+                </md-button>
+                <h1 flex laout-align="center center">
+                    <span>Angular Material DotNet</span>
+                </h1>
+                <span flex></span>
+                <span ng-hide="!authentication.isAuth"><a href="#/home">Hi {{authentication.userName}}</a></span>
+
+                <md-button class="md-icon-button" aria-label="Login" ng-hide="authentication.isAuth">
+                    <ng-md-icon icon="login" size="48" style="fill:white;" ng-click="go('/login')"></ng-md-icon>
+                    <md-tooltip>
+                        Login
+                    </md-tooltip>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Logout" ng-hide="!authentication.isAuth">
+                    <ng-md-icon icon="logout" size="48" style="fill:white;" ng-click="logOut()"></ng-md-icon>
+                    <md-tooltip>
+                        Logout
+                    </md-tooltip>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-content flex layout-padding id="content">
+            <div class="fade-view" flex data-ng-view="">
+            </div>
+    </div>
+
+    <!-- 3rd party libraries -->
+    <!-- Bower Components -->
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="/bower_components/svg-morpheus/compile/minified/svg-morpheus.js"></script>
+    <script src="/bower_components/angular-filter/dist/angular-filter.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="/bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+    <!-- Load app main script -->
+    <script src="app/app.js"></script>
+    <!-- Load services -->
+    <script src="app/services/authInterceptorService.js"></script>
+    <script src="app/services/authService.js"></script>
+    <script src="app/services/valueService.js"></script>
+    <script src="app/services/userService.js"></script>
+    <!-- Load controllers -->
+    <script src="app/controllers/indexController.js"></script>
+    <script src="app/controllers/homeController.js"></script>
+    <script src="app/controllers/userController.js"></script>
+    <script src="app/controllers/loginController.js"></script>
+    <script src="app/controllers/signupController.js"></script>
+    <script src="app/controllers/valueController.js"></script>
+    <script src="app/controllers/sideNavLeftController.js"></script>
+    <!-- Load custom filters -->
+    <script src="app/filters/reverseFilter.js"></script>
+    <!-- Load custom directives -->
+</body>
+</html>
