@@ -1,0 +1,23 @@
+﻿<div layout="row">
+    <div flex flex-gt-sm="50" offset-gt-sm="25">
+        <form name="form">
+            <h2>Value Details</h2>
+            <md-input-container flex>
+                <label>ValueId</label>
+                <input disabled ng-model="value.valueId">
+            </md-input-container>
+            <md-input-container flex>
+                <label>Name</label>
+                <input disabled ng-model="value.name">
+            </md-input-container>
+            <md-input-container flex>
+                <label>Description</label>
+                <input disabled ng-model="value.description">
+            </md-input-container>
+            <div layout="row" layout-align="end">
+                <md-button type="submit" data-ng-click="go('/values')">Back</md-button>
+            </div>
+
+        </form>
+    </div>
+</div>

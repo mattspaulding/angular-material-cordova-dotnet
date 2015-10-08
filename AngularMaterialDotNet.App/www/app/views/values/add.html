@@ -1,0 +1,28 @@
+﻿<div layout="row">
+    <div flex flex-gt-sm="50" offset-gt-sm="25">
+        <form name="form">
+            <h2>Add Value</h2>
+            <md-input-container flex>
+                <label>Name</label>
+                <input required name="name" ng-maxlength="20" ng-model="value.name">
+                <div ng-messages="form.name.$error">
+                    <div ng-message="required">required</div>
+                    <div ng-message="maxlength">too long</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex>
+                <label>Description</label>
+                <input name="description" ng-maxlength="100" ng-model="value.description">
+                <div ng-messages="form.description.$error">
+                    <div ng-message="maxlength">too long</div>
+                </div>
+            </md-input-container>
+            <div layout="row" layout-align="end">
+                <md-button type="submit" data-ng-click="addValue()">Submit</md-button>
+            </div>
+            <div ng-hide="message == ''" ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                {{message}}
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿<div layout="row">
+    <div flex flex-gt-sm="50" offset-gt-sm="25">
+        <md-content layout-padding>
+            <form name="userForm">
+                <h2 class="form-login-heading">Sign up</h2>
+                <md-input-container flex>
+                    <label>Username</label>
+                    <input required name="userName" ng-maxlength="20" ng-model="registration.userName">
+                    <div ng-messages="userForm.userName.$error">
+                        <div ng-message="required">required</div>
+                        <div ng-message="maxlength">too long</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Password</label>
+                    <input required name="password" type="password" ng-model="registration.password">
+                    <div ng-messages="userForm.password.$error">
+                        <div ng-message="required">required</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Confirm Password</label>
+                    <input required name="confirmPassword" type="password" ng-model="registration.confirmPassword">
+                    <div ng-messages="userForm.confirmPassword.$error">
+                        <div ng-message="required">required</div>
+                    </div>
+                </md-input-container>
+                <div layout="row" layout-align="end">
+                    <md-button type="submit" data-ng-click="signUp()">Submit</md-button>
+                </div>
+                <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                    {{message}}
+                </div>
+            </form>
+        </md-content>
+    </div>
+</div>

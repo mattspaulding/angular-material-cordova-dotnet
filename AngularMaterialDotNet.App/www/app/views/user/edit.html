@@ -1,0 +1,22 @@
+﻿<div layout="row">
+    <div flex flex-gt-sm="50" offset-gt-sm="25">
+        <form name="form">
+            <h2>Edit User</h2>
+            <md-input-container flex>
+                <label>UserName</label>
+                <input required name="userName" ng-maxlength="100" ng-model="user.userName">
+                <div ng-messages="form.userName.$error">
+                    <div ng-message="required">required</div>
+                    <div ng-message="maxlength">too long</div>
+                </div>
+            </md-input-container>
+
+            <div layout="row" layout-align="end">
+                <md-button type="submit" data-ng-click="editUser()">Edit User</md-button>
+            </div>
+            <div ng-hide="message == ''" ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                {{message}}
+            </div>
+        </form>
+    </div>
+</div>

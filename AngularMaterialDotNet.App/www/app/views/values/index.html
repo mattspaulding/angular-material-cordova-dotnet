@@ -1,0 +1,27 @@
+﻿<div>
+    <div layout="row" layout-sm="column" layout-align="center center" ng-show="data.loading">
+        <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+    </div>
+    <md-list flex>
+        <md-subheader class="md-no-sticky">All Values</md-subheader>
+        <md-list-item flex class="md-whiteframe-z1" style="padding:10px;margin:10px;background-color:lightblue" ng-repeat="value in values">
+            <p class="md-no-sticky">{{value.name}}</p>
+            <p class="md-no-sticky">{{value.description}}</p>
+   <div flex>
+       <md-button aria-label="Details" class="md-icon-button">
+           <ng-md-icon icon="details" style="fill:#23B9A3;" ng-click="go('/values/details/'+value.valueId)"></ng-md-icon>
+       </md-button>
+       <md-button aria-label="Edit" class="md-icon-button">
+           <ng-md-icon icon="edit" style="fill:#23B9A3;" ng-click="go('/values/edit/'+value.valueId)"></ng-md-icon>
+       </md-button>
+          <md-button aria-label="Delete" class="md-icon-button">
+                    <ng-md-icon icon="delete" style="fill:#23B9A3;" ng-click="deleteValue(value)"></ng-md-icon>
+                </md-button>
+            </div>
+        </md-list-item>
+    </md-list>
+    <div layout="row" layout-align="end">
+        <md-button class="md-raised" data-ng-click="go('/values/add')">Add Value</md-button>
+    </div>
+
+</div>
